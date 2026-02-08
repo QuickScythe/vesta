@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        // Replace OWNER and REPOSITORY with your GitHub username or organization name and the repository name
+        url "https://maven.pkg.github.com/Quipt-Minecraft/quipt"
+        credentials {
+            username = "QuickScythe"
+            password = System.getenv("PACKAGES_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation "com.quiptmc:core:$quipt_version"
+    implementation "org.json:json:$json_version"
+    implementation "com.quiptmc:bot:$quipt_version"
+
+
+    implementation "net.dv8tion:JDA:$jda_version"
+}
+
+test {
+    useJUnitPlatform()
+}

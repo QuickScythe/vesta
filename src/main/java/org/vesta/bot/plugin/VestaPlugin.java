@@ -2,6 +2,7 @@ package org.vesta.bot.plugin;
 
 import com.quiptmc2.discord.plugins.BotPlugin;
 import com.quiptmc2.discord.plugins.BotPluginLoader;
+import org.vesta.bot.plugin.listeners.ReportSubmitListener;
 import org.vesta.bot.plugin.listeners.TimePunchListener;
 
 import java.io.File;
@@ -24,6 +25,7 @@ public class VestaPlugin extends BotPlugin {
 
     public void enable(){
         bot().plugins().events().register("time-punch", new TimePunchListener());
+        bot().plugins().events().register("report-submit", new ReportSubmitListener());
     }
 
     @Override

@@ -21,7 +21,7 @@ public class ReportSubmitListener extends EventListener<ReportSubmitEvent> {
         for(QuiptGuild guild : Vesta.INSTANCE.bot().qda().guilds().all()){
             for(QuiptTextChannel channel : guild.getTextChannels()){
                 if(channel.id().equals(config.time_punch_channel)){
-                    channel.send("new report submitted: " + event.data());
+                    channel.send("new report submitted: " + event.data().id());
                 }
             }
         }

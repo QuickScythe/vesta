@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'org.example'
-version = '0.1.0-SNAPSHOT'
+version = "$project_version-${build_status}.${build_number}"
 
 repositories {
     mavenCentral()

@@ -1,11 +1,13 @@
 package org.vesta.bot.plugin.listeners;
 
 import com.quiptmc2.core.discord.embed.Embed;
+import com.quiptmc2.core.resources.Resource;
 import com.quiptmc2.discord.plugins.events.EventListener;
 import com.quiptmc2.discord.plugins.events.qda.message.MessageReceivedEvent;
 import org.vesta.core.Vesta;
 import org.vesta.core.clients.Client;
 import org.vesta.core.clients.reports.Report;
+import org.vesta.core.clients.reports.URID;
 
 import java.awt.*;
 import java.util.Date;
@@ -48,9 +50,13 @@ public class TimePunchListener extends EventListener.MessageReceivedListener {
             e.channel().send(embedBuilder.build());
         } else {
             if(lowerCaseMessage.equals("test")){
-                Client client = Vesta.INSTANCE.clients().get("test").get();
-                Report report = client.create(client.date(System.currentTimeMillis()));
-                report.save();
+                System.out.println("test");
+                Client client = Vesta.INSTANCE.clients().get("west-ridge-mall");
+                long now = System.currentTimeMillis();
+                Report report1 = client.reports().create(client.reports().date(now));
+                report1.save();
+                Report report2 = client.reports().create(client.reports().date(now));
+                report2.save();
                 return;
             }
             e.channel().send(e.author().mention() + " Please use `in` or `out` to punch time");
